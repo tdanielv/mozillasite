@@ -1,0 +1,16 @@
+{% extends 'base_template.html' %}
+
+{% block content %}
+<h1>{{author.first_name}} {{author.last_name}}</h1>
+<div style="margin-left:20px;margin-top:20px">
+    <h4>Books</h4>
+
+    {% for book in author.book_set.all %}
+    <h3>
+        <a href="{% url 'book-detail' book.id %}">{{book.title}}</a>
+    </h3>
+
+
+    {% endfor %}
+  </div>
+{% endblock %}

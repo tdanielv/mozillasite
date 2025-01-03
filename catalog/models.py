@@ -38,7 +38,9 @@ class Book(models.Model):
         return ', '.join([ genre.name for genre in self.genre.all()[:3] ])
     display_genre.short_description = 'Жанр'
     # short_description указывает как будет называться данная функция в админ панели если мы ее укажем показывать на панели в admin.py
-    
+    class Meta:
+        ordering = ['title']    
+
 class BookInstance(models.Model):
     id = models.UUIDField(primary_key=True,default=uuid.uuid4, help_text='ID для каждой книги индивидуален в библиотеке' )
     book = models.ForeignKey(Book, on_delete=models.SET_NULL, null=True)
